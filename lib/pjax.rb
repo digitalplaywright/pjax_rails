@@ -2,7 +2,7 @@ module Pjax
   extend ActiveSupport::Concern
 
   included do
-    layout proc { |c| pjax_request? ? pjax_layout : 'application' }
+    layout proc { |c|  pjax_layout }, :only =>  :pjax_request?
     helper_method :pjax_request?
 
     before_filter :strip_pjax_param, :if => :pjax_request?
